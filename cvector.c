@@ -77,7 +77,7 @@ dtype *new_vec()
 	return d+1;
 }
 
-dtype vec_size(dtype* vec)
+long long vec_size(dtype* vec)
 {
 	return vec[-1];
 }
