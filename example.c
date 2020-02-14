@@ -24,8 +24,11 @@ int main()
 
 	vec_popidx(d, 4);
 	vec_printall(d);
-
+	
+	d[0] = 38;
+	printf("%d\n",vec_count(d, 38));
 	vec_remove(d, 38);
+	printf("%d\n",vec_count(d, 38));
 	vec_printall(d);
 
 	vec_clear(d);

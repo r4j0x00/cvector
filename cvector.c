@@ -77,6 +77,16 @@ void vec_remove_int(dtype **self, dtype value) // Removes the first occurence of
 	}
 }
 
+unsigned int vec_count(dtype *self, dtype value)
+{
+	unsigned int count = 0;
+	unsigned int size = self[-1];
+	for(int i=0;i<size;++i)
+		if(self[i]==value)
+			++count;
+	return count;
+}
+
 void vec_printall(dtype *self)
 {
 	--self;
