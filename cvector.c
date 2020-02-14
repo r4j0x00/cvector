@@ -15,6 +15,17 @@ int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
 }
 
+int vec_index(dtype *self, dtype value)
+{
+	unsigned int size = self[-1];
+	for(int i=0;i<size;++i)
+	{
+		if(self[i] == value)
+			return i;
+	}
+	return -1;
+}
+
 void vec_push_int(dtype **self, dtype ele) {
 	--*self;
 	++*self[0];
@@ -58,23 +69,10 @@ void vec_pop_idx_int(dtype **self, unsigned int idx)
 
 void vec_remove_int(dtype **self, dtype value) // Removes the first occurence of a value in the array if found
 {
-	--*self;
-	if(!*self[0])
-	{
-		++*self;
-		return;
-	}
-	unsigned int size = *self[0];
 	dtype* s = *self;
-	for (int i=1;i<size;++i)
-	{
-		if (s[i] == value)
-		{
-			++*self;
-			vec_pop_idx_int(self, i-1);
-			break;
-		}
-	}
+	int idx = vec_index(s,value);
+	if(idx == -1) return;
+	vec_pop_idx_int(self, idx);
 }
 
 unsigned int vec_count(dtype *self, dtype value)

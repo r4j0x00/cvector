@@ -9,6 +9,7 @@
 int cmpfunc (const void * a, const void * b);
 void vec_push_int(dtype **self, dtype ele);
 void vec_pop_int(dtype **self);
+int vec_index(dtype *self, dtype value);
 void vec_pop_idx_int(dtype **self, unsigned int idx);
 void vec_remove_int(dtype **self, dtype value);
 unsigned int vec_count(dtype *self, dtype value);
