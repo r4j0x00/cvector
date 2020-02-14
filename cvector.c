@@ -9,6 +9,7 @@
 #define vec_push(d,e) vec_push_int(&d, e)
 #define vec_pop(d) vec_pop_int(&d)
 #define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
+#define vec_remove(d, val) vec_remove_int(&d, val)
 
 int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
@@ -53,6 +54,27 @@ void vec_pop_idx_int(dtype **self, unsigned int idx)
 	}
 	*self = (dtype*)realloc(*self, (*self[0]*sizeof(dtype))+sizeof(dtype));
 	++*self;
+}
+
+void vec_remove_int(dtype **self, dtype value) // Removes the first occurence of a value in the array if found
+{
+	--*self;
+	if(!*self[0])
+	{
+		++*self;
+		return;
+	}
+	unsigned int size = *self[0];
+	dtype* s = *self;
+	for (int i=1;i<size;++i)
+	{
+		if (s[i] == value)
+		{
+			++*self;
+			vec_pop_idx_int(self, i-1);
+			break;
+		}
+	}
 }
 
 void vec_printall(dtype *self)

@@ -4,11 +4,13 @@
 #define vec_push(d,e) vec_push_int(&d, e)
 #define vec_pop(d) vec_pop_int(&d)
 #define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
+#define vec_remove(d, val) vec_remove_int(&d, val)
 
 int cmpfunc (const void * a, const void * b);
 void vec_push_int(dtype **self, dtype ele);
 void vec_pop_int(dtype **self);
 void vec_pop_idx_int(dtype **self, unsigned int idx);
+void vec_remove_int(dtype **self, dtype value);
 void vec_printall(dtype *self);
 void vec_sort(dtype *self);
 void vec_reverse(dtype *self);
