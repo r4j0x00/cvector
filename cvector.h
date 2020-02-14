@@ -3,10 +3,12 @@
 #define vec_clear(d) vec_resize_int(&d, 0)
 #define vec_push(d,e) vec_push_int(&d, e)
 #define vec_pop(d) vec_pop_int(&d)
+#define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
 
 int cmpfunc (const void * a, const void * b);
 void vec_push_int(dtype **self, dtype ele);
 void vec_pop_int(dtype **self);
+void vec_pop_idx_int(dtype **self, unsigned int idx);
 void vec_printall(dtype *self);
 void vec_sort(dtype *self);
 void vec_reverse(dtype *self);

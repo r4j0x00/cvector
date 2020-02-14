@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #define dtype long long
 #define vec_resize(d,s) vec_resize_int(&d, s)
 #define vec_clear(d) vec_resize_int(&d, 0)
 #define vec_push(d,e) vec_push_int(&d, e)
 #define vec_pop(d) vec_pop_int(&d)
+#define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
 
 int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
@@ -33,6 +35,25 @@ void vec_pop_int(dtype **self) {
 	++*self;
 };
 
+void vec_pop_idx_int(dtype **self, unsigned int idx)
+{
+	--*self;
+	unsigned int size = *self[0];
+	if(!size)
+	{
+		++*self;
+		return;
+	}
+	assert(idx < size);
+	--*self[0];
+	dtype *s  = *self+1;
+	for(int i=idx; i < size-1; ++i)
+	{
+		s[i] = s[i+1];
+	}
+	*self = (dtype*)realloc(*self, (*self[0]*sizeof(dtype))+sizeof(dtype));
+	++*self;
+}
 
 void vec_printall(dtype *self)
 {

@@ -22,6 +22,9 @@ int main()
 	d[4] = 5;
 	vec_printall(d);
 
+	vec_popidx(d, 4);
+	vec_printall(d);
+
 	vec_clear(d);
 	vec_printall(d);
 }
