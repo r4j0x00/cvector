@@ -10,6 +10,7 @@
 #define vec_pop(d) vec_pop_int(&d)
 #define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
 #define vec_remove(d, val) vec_remove_int(&d, val)
+#define vec_insert(d, idx, val) vec_insert_int(&d, idx, val)
 
 int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
@@ -150,5 +151,20 @@ void vec_resize_int(dtype **vec, unsigned int n)
 
 	*vec[0] = n;
 	++*vec;
+	return;
+}
+
+void vec_insert_int(dtype **vec, unsigned int idx, dtype value)
+{
+	--*vec;
+	unsigned int size = *vec[0];
+	assert(idx <= size);
+	++*vec[0];
+	*vec = (dtype*)realloc(*vec, (*vec[0]*sizeof(dtype))+sizeof(dtype));
+	++*vec;
+	dtype* s = *vec;
+	for(int i=size-1;i>idx;--i)
+		s[i] = s[i-1];
+	s[idx] = value;
 	return;
 }

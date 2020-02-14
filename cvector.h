@@ -5,6 +5,7 @@
 #define vec_pop(d) vec_pop_int(&d)
 #define vec_popidx(d,idx) vec_pop_idx_int(&d, idx)
 #define vec_remove(d, val) vec_remove_int(&d, val)
+#define vec_insert(d, idx, val) vec_insert_int(&d, idx, val)
 
 int cmpfunc (const void * a, const void * b);
 void vec_push_int(dtype **self, dtype ele);
@@ -19,3 +20,4 @@ void vec_reverse(dtype *self);
 dtype *new_vec();
 dtype vec_size(dtype* vec);
 void vec_resize_int(dtype **vec, unsigned int n);
+void vec_insert_int(dtype **vec, unsigned int idx, dtype value);

@@ -31,6 +31,9 @@ int main()
 	printf("%d\n",vec_count(d, 38));
 	vec_printall(d);
 
+	vec_insert(d, 5, 1337);
+	vec_printall(d);
+
 	vec_clear(d);
 	vec_printall(d);
 }
