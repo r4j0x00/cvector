@@ -168,3 +168,21 @@ void vec_insert_int(dtype **vec, unsigned int idx, dtype value)
 	s[idx] = value;
 	return;
 }
+
+dtype* vec_join(dtype *vec1, dtype *vec2)
+{
+	dtype *new = new_vec();
+	unsigned int size_1 = vec_size(vec1);
+	unsigned int size_2 = vec_size(vec2);
+
+	vec_resize_int(&new, size_1+size_2);
+	int i;
+	
+	for(i=0; i < size_1; ++i)
+		new[i] = vec1[i];
+
+	for(i=0; i < size_2; ++i)
+		new[i+size_1] = vec2[i];
+
+	return new;
+}

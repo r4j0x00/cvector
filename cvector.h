@@ -21,3 +21,4 @@ dtype *new_vec();
 dtype vec_size(dtype* vec);
 void vec_resize_int(dtype **vec, unsigned int n);
 void vec_insert_int(dtype **vec, unsigned int idx, dtype value);
+dtype* vec_join(dtype *vec1, dtype *vec2);

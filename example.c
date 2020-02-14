@@ -33,6 +33,13 @@ int main()
 
 	vec_insert(d, 5, 1337);
 	vec_printall(d);
+	
+	long long* d2 = new_vec();
+	vec_push(d2, 12);
+	vec_push(d2, 16);
+
+	long long *d3 = vec_join(d2, d);
+	vec_printall(d3);
 
 	vec_clear(d);
 	vec_printall(d);
